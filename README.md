@@ -15,7 +15,7 @@ This will most likely lead to many small loses, but when you win; due to the exp
 
 ### TODO List
 
--Proof of concept
+- Proof of concept
 - GUI
 - Utilizing the strategy of the recursive barbell for other subject areas.
 
