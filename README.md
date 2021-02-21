@@ -13,6 +13,10 @@ When inputting strategies under the framework of a recursive barbell one should 
 This will most likely lead to many small loses, but when you win; due to the exponential risk curve; you should win big. 
 
 
+The bot will be built utilizing a multitidude of AWS services to create a highly available and fault taulerant system with minimal operational overhead.
+
+This will be represented using a cloudformation stack template.
+
 ### TODO List
 
 - Proof of concept
