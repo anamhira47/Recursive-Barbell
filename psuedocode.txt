@@ -1,0 +1,15 @@
+Where X = 90% Allocation to R*safe funds
+Where Y = 10% ALlocation to R*risky funds
+Where floor = min amount to trade;
+Where r= base risk
+Choose investment based on risk level from array with
+a multitude of investment vehicles.
+Barbell(x,y,r,floor)
+    If((X OR Y) <=  floor)
+        return;
+    else
+        Invest(r*safe,x);
+        Invest(r*riskier,y);
+        Barbell(y,y/10,r,floor);
+
+
