@@ -96,7 +96,7 @@
                 }
             },
             "DependsOn": [
-                "AGV2A2XL9C"
+                "BotAPI"
             ]
         },
         "BotAPI": {
@@ -108,7 +108,7 @@
                 }
             },
             "DependsOn": [
-                "staticWebsite",
+                
                 "apiCallQueue"
             ]
         },
