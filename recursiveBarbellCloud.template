@@ -1,0 +1,149 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Metadata": {
+        "AWS::CloudFormation::Designer": {
+            "6d71361f-d721-4c6d-8ca8-af9ec9789cbe": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": -190,
+                    "y": 10
+                },
+                "z": 0,
+                "embeds": [],
+                "dependson": [
+                    "07ff66b0-13fa-4a9d-b0f3-98d6038999dd"
+                ]
+            },
+            "07ff66b0-13fa-4a9d-b0f3-98d6038999dd": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": -70,
+                    "y": -60
+                },
+                "z": 0,
+                "embeds": [],
+                "dependson": [
+                    "6d71361f-d721-4c6d-8ca8-af9ec9789cbe",
+                    "2d382b88-087c-4078-9d73-69ccd703beb7"
+                ]
+            },
+            "2d382b88-087c-4078-9d73-69ccd703beb7": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 32.2042236328125,
+                    "y": 26.914306640625
+                },
+                "z": 0,
+                "embeds": []
+            },
+            "48bd8bb9-b934-4ad0-b62c-73aecfde5939": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 150,
+                    "y": 10
+                },
+                "z": 0,
+                "embeds": [],
+                "dependson": [
+                    "2d382b88-087c-4078-9d73-69ccd703beb7"
+                ]
+            },
+            "ba3b5a29-40bd-4e55-902c-b93d3934ac7a": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": -80,
+                    "y": 70
+                },
+                "z": 0,
+                "embeds": [],
+                "dependson": [
+                    "48bd8bb9-b934-4ad0-b62c-73aecfde5939"
+                ]
+            },
+            "6e0912f2-9c20-4752-9246-170a16a24679": {
+                "source": {
+                    "id": "ba3b5a29-40bd-4e55-902c-b93d3934ac7a"
+                },
+                "target": {
+                    "id": "48bd8bb9-b934-4ad0-b62c-73aecfde5939"
+                },
+                "z": 11
+            }
+        }
+    },
+    "Resources": {
+        "staticWebsite": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {},
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "6d71361f-d721-4c6d-8ca8-af9ec9789cbe"
+                }
+            },
+            "DependsOn": [
+                "AGV2A2XL9C"
+            ]
+        },
+        "BotAPI": {
+            "Type": "AWS::ApiGatewayV2::Api",
+            "Properties": {},
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "07ff66b0-13fa-4a9d-b0f3-98d6038999dd"
+                }
+            },
+            "DependsOn": [
+                "staticWebsite",
+                "apiCallQueue"
+            ]
+        },
+        "apiCallQueue": {
+            "Type": "AWS::SQS::Queue",
+            "Properties": {},
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "2d382b88-087c-4078-9d73-69ccd703beb7"
+                }
+            }
+        },
+        "botLogic": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {},
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "48bd8bb9-b934-4ad0-b62c-73aecfde5939"
+                }
+            },
+            "DependsOn": [
+                "apiCallQueue"
+            ]
+        },
+        "emailNotifs": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {},
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "ba3b5a29-40bd-4e55-902c-b93d3934ac7a"
+                }
+            },
+            "DependsOn": [
+                "botLogic"
+            ]
+        }
+    }
+}
